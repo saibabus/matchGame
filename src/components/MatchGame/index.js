@@ -42,18 +42,12 @@ class MatchGame extends Component {
   }
 
   stratingintervalId = () => {
-    const {time} = this.state
-    if (time === 0) {
-      this.clearTimeInteraval()
-      this.setState(prevstate => ({isGameRunning: !prevstate.isGameRunning}))
-    } else {
-      this.IntervalId = setInterval(this.decreasingTime, 1000)
-    }
+    this.IntervalId = setInterval(this.decreasingTime, 1000)
   }
 
   onclickPlayagain = () => {
     this.clearTimeInteraval()
-    this.stratingintervalId()
+    this.componentDidMount()
     this.setState({
       selectedTab: tabsList[0].tabId,
       bigImageIndex: 0,
@@ -71,7 +65,7 @@ class MatchGame extends Component {
     const {imagesList} = this.props
     const {bigImageIndex} = this.state
     if (imagesList[bigImageIndex].id === id) {
-      const indexis = Math.ceil(Math.random() * imagesList.length - 1)
+      const indexis = Math.floor(Math.random() * imagesList.length - 1)
       this.setState(prevstate => ({
         bigImageIndex: indexis,
         score: prevstate.score + 1,
