@@ -65,7 +65,7 @@ class MatchGame extends Component {
     const {imagesList} = this.props
     const {bigImageIndex} = this.state
     if (imagesList[bigImageIndex].id === id) {
-      const indexis = Math.floor(Math.random() * imagesList.length - 1)
+      const indexis = Math.floor(Math.random() * imagesList.length)
       this.setState(prevstate => ({
         bigImageIndex: indexis,
         score: prevstate.score + 1,
